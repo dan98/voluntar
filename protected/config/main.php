@@ -10,7 +10,7 @@ return array(
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'booster'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -32,6 +32,9 @@ return array(
 
 	// application components
 	'components'=>array(
+        'booster'=>array(
+            'class'=>'ext.yiibooster.components.Booster'
+        ),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
