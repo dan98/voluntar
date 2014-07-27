@@ -18,8 +18,23 @@ class Controller extends CController
             parent::render($view, $data);
     }
 
-    public function filterMineOnly($filterChain){
-        if(!Yii::app()->user->checkAccess('mineOnly', array('id' => $_GET['id'])))
+    public function filterUpdateUserControl($filterChain){
+        if(!Yii::app()->user->checkAccess('updateUser', array('id' => $_GET['id'])))
+            throw new CHttpException(403,'Cant perform this action.');
+        $filterChain->run();
+    }
+    public function filterUpdateEventControl($filterChain){
+        if(!Yii::app()->user->checkAccess('updateEvent', array('id' => $_GET['id'])))
+            throw new CHttpException(403,'Cant perform this action.');
+        $filterChain->run();
+    }
+    public function filterUpdateOrganizationControl($filterChain){
+        if(!Yii::app()->user->checkAccess('updateOrganization', array('id' => $_GET['id'])))
+            throw new CHttpException(403,'Cant perform this action.');
+        $filterChain->run();
+    }
+    public function filterModerControl($filterChain){
+        if(!Yii::app()->user->checkAccess())
             throw new CHttpException(403,'Cant perform this action.');
         $filterChain->run();
     }
