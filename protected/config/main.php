@@ -18,6 +18,7 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.vendors.*',
+        'ext.yiibooster.helpers.*'
     ),
 
     'modules'=>array(
@@ -27,6 +28,25 @@ return array(
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters'=>array('127.0.0.1','::1'),
         ),
+        'hybridauth' => array(
+            'baseUrl' => 'http://'. $_SERVER['SERVER_NAME'] . '/hybridauth',
+            "providers" => array (
+                "facebook" => array (
+                    "enabled" => true,
+                    "keys"    => array ( "id" => "1431198330481769", "secret" => "97fecea5d93e5de0b727c6b6c48e5994" ),
+                    "scope"   => "email, publish_stream, user_birthday, publish_actions, user_about_me",
+                    "display" => ""
+                ),
+                "Google" => array (
+                    "enabled" => true,
+                    "keys"    => array ( "id" => "1025304017473-i6cks1ccp2jf7jka97v6mv52fp1j5lfr.apps.googleusercontent.com", "secret" => "ZttmSTERTxbxCC2BgcM1-vzf" ),
+                    "scope"           => "https://www.googleapis.com/auth/userinfo.profile ". // optional
+                        "https://www.googleapis.com/auth/userinfo.email"   , // optional
+                    "access_type"     => "offline",   // optional
+                    "approval_prompt" => "force",     // optional
+                )
+            )
+        )
     ),
 
     // application components

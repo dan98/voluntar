@@ -1,3 +1,6 @@
 #page{
     padding-top: 80px;
 }
+.radio, .checkbox {
+    display: inline-block!important;
+}
