@@ -8,6 +8,7 @@
 return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
     'name'=>'My Web Application',
+
     'defaultController'=>'event',
 
     // preloading 'log' component
@@ -18,7 +19,9 @@ return array(
         'application.models.*',
         'application.components.*',
         'application.vendors.*',
-        'ext.yiibooster.helpers.*'
+        'ext.booster.helpers.*',
+        'ext.egmap.*',
+        'application.vendors.linkify.*'
     ),
 
     'modules'=>array(
@@ -51,8 +54,11 @@ return array(
 
     // application components
     'components'=>array(
+        'errorHandler'=>array(
+            'errorAction'=>'site/error',
+        ),
         'booster'=>array(
-            'class'=>'ext.yiibooster.components.Booster'
+            'class'=>'ext.booster.components.Booster'
         ),
         'debug'=>array(
             'class'=>'ext.debug.Yii2Debug'
@@ -86,6 +92,10 @@ return array(
             'enableProfiling' => true,
             'enableParamLogging' => true,
         ),
+        'cache'=>array(
+            'class'=>'system.caching.CMemCache',
+            'useMemcached'=>true
+        ),
         'log'=>array(
             'class'=>'CLogRouter',
             'routes'=>array(
@@ -100,10 +110,9 @@ return array(
         ),
     ),
 
-    // application-level parameters that can be accessed
-    // using Yii::app()->params['paramName']
     'params'=>array(
-        // this is used in contact page
         'adminEmail'=>'webmaster@example.com',
+        'eventLat'=>47.025528242874,
+        'eventLng'=>28.8305027851974,
     ),
 );

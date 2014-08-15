@@ -16,6 +16,42 @@ class SiteController extends Controller
 		);
 	}
 
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            // Guests allow.
+            array('allow',
+                'actions'=>array('contact','error','captcha','page'),
+                'users'=>array('*'),
+            ),
+            // Deny all safety.
+            array('deny',
+                'users'=>array('*'),
+            ),
+        );
+    }
+
+    /**
+     * This is the action to handle external exceptions.
+     */
+    public function actionError()
+    {
+        if($error=Yii::app()->errorHandler->error)
+        {
+            if(Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('error', $error);
+        }
+    }
+
 	public function actionContact()
 	{
 		$model=new ContactForm;

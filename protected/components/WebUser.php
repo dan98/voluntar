@@ -62,6 +62,8 @@ class WebUser extends CWebUser
                 $event=Event::model()->findByPk($params['id']);
                 if($event->status == Event::STATUS_ACCEPTED && time() > strtotime($event->time))
                     return true;
+                else
+                    return false;
                 break;
 
             case 'updateOrganization':
